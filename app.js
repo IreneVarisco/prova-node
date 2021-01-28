@@ -23,20 +23,60 @@ package.json--> descrizione fel progetto
     node app.js
 
     npm initnp
+
+
+    prima cosa da fare nel command:
+    npm i
+    npm start
+
+     res.end non si usa più, quindi si usa send
 */
+
+var isco = "un nome";
+
+var path = require("path");
 
 var http = require("http");
 var express = require("express");
+//const { hostname } = require("os");
 var HostName = "127.0.0.1";
+var nome="node";
+var APIserver = express();
 
-var port= 3000;
+var port = 3000;
 
-var server= http.createServer((req, res) =>{
+/*var server= http.createServer((req, res) =>{
+    console.log("req:", req);
     res.statusCode=200;
     res.setHeader("content-Type", "text/plain");
     res.end("helloo!");
 });
+*/
 
-server.listen(port, HostName, () =>{
-    console.log("Server running at http://%s:%d/");
+APIserver.listen(port, HostName, () =>{
+    console.log("Server running at http://%s:%d/", HostName, port);
 });
+
+APIserver.get("/nome", (req, res)=>{
+    console.log("ho ricevuto una get su nome");
+    /*
+    res.statusCode=200;
+    res.setHeader("content-Type", "text/plain");*/
+    res.send("ciao! il nome del server è " + nome);
+});
+
+APIserver.get("/", function(req, res){
+    res.send("homepage");
+});
+
+APIserver.get("/bella",  (req, res)=>{
+    //res.sendFile("C:\\Users\\varisco.irene\\Desktop\\prova-node\\bella.html");                 //manda un file attraverso il suo path
+    res.sendFile(path.join(__dirname + "/bella.html")); //funziona con tutti i sistemi operativi
+});
+
+APIserver.get("/richiesta", (req, res)=>{
+    console.log("req:", req);
+    res.send("ciao! il nome del server è " + req.query.nome);
+});
+
+//fare un api che fa una somma
