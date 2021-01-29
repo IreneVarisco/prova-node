@@ -32,18 +32,21 @@ package.json--> descrizione fel progetto
      res.end non si usa più, quindi si usa send
 */
 
-var isco = "un nome";
+
+var nome="node";
 
 var path = require("path");
 
 var http = require("http");
 var express = require("express");
+
+var APIserver = express();
 //const { hostname } = require("os");
 var HostName = "127.0.0.1";
-var nome="node";
-var APIserver = express();
-
 var port = 3000;
+
+
+
 
 /*var server= http.createServer((req, res) =>{
     console.log("req:", req);
@@ -75,8 +78,11 @@ APIserver.get("/bella",  (req, res)=>{
 });
 
 APIserver.get("/richiesta", (req, res)=>{
-    console.log("req:", req);
-    res.send("ciao! il nome del server è " + req.query.nome);
+    console.log("req:", req); 
+    res.send("ciao! il nome del server è " + req.query.nome); 
 });
 
-//fare un api che fa una somma
+APIserver.get("/somma", (req, res)=>{
+    var isco = parseInt(req.query.a) + parseInt(req.query.b);
+    res.send("ciao! la somma tra " + req.query.a + " e " + req.query.b + " è "+ isco); 
+});
