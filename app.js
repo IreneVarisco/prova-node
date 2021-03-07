@@ -57,8 +57,8 @@ var HostName = "127.0.0.1";
 });
 */
 
-APIserver.listen(port, () =>{
-    console.log("Server running at http://%s:%d/", HostName, port);
+APIserver.listen(port, () => {
+    console.log("server running on port ", port);
 });
 
 APIserver.get("/nome", (req, res)=>{
