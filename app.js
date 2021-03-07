@@ -39,11 +39,12 @@ var path = require("path");
 
 var http = require("http");
 var express = require("express");
-
 var APIserver = express();
+var port = 3000;
+
 //const { hostname } = require("os");
 var HostName = "127.0.0.1";
-var port = 3000;
+
 
 
 
@@ -56,7 +57,7 @@ var port = 3000;
 });
 */
 
-APIserver.listen(port, HostName, () =>{
+APIserver.listen(port, () =>{
     console.log("Server running at http://%s:%d/", HostName, port);
 });
 
