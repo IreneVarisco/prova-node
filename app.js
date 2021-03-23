@@ -33,7 +33,7 @@ package.json--> descrizione fel progetto
 */
 
 
-var nome="node";
+var nome = "node";
 
 var path = require("path");
 
@@ -57,11 +57,13 @@ var HostName = "127.0.0.1";
 });
 */
 
+apiServer.use(cors());
+
 APIserver.listen(port, () => {
     console.log("server running on port ", port);
 });
 
-APIserver.get("/nome", (req, res)=>{
+APIserver.get("/nome", (req, res) => {
     console.log("ho ricevuto una get su nome");
     /*
     res.statusCode=200;
@@ -69,21 +71,53 @@ APIserver.get("/nome", (req, res)=>{
     res.send("ciao! il nome del server è " + nome);
 });
 
-APIserver.get("/", function(req, res){
+APIserver.get("/", function (req, res) {
     res.send("homepage");
 });
 
-APIserver.get("/bella",  (req, res)=>{
+APIserver.get("/bella", (req, res) => {
     //res.sendFile("C:\\Users\\varisco.irene\\Desktop\\prova-node\\bella.html");                 //manda un file attraverso il suo path
     res.sendFile(path.join(__dirname + "/bella.html")); //funziona con tutti i sistemi operativi
 });
 
-APIserver.get("/richiesta", (req, res)=>{
-    console.log("req:", req); 
-    res.send("ciao! il nome del server è " + req.query.nome); 
+APIserver.get("/richiesta", (req, res) => {
+    console.log("req:", req);
+    res.send("ciao! il nome del server è " + req.query.nome);
 });
 
-APIserver.get("/somma", (req, res)=>{
-    var isco = parseInt(req.query.a) + parseInt(req.query.b);
-    res.send("ciao! la somma tra " + req.query.a + " e " + req.query.b + " è "+ isco); 
+APIserver.get("/somma", (req, res) => {
+    if (req.query.a && req.query.b) {
+        var isco = parseInt(req.query.a) + parseInt(req.query.b);
+        res.send("ciao! la somma tra " + req.query.a + " e " + req.query.b + " è " + isco);
+    } else {
+        res.status(500);
+        res.send("parametri non corretti");
+    }
 });
+
+// riceve in ingresso username e password e invia un messaggio "benvenuto [username]"
+APIserver.get("/login" , (req, res) => {}); 
+
+// riceve in ingresso username e password e invia un messaggio "benvenuto [username]"
+APIserver.post("/login" , (req, res) => {}); 
+
+/*
+sviluppare una pagina html con un div e duie pulsanti.
+Premendo sul pulsante "post" invierete una post con username e password e visualizzerete nella div il messaggio inviato dal server
+Premendo il pulsante "get" stessa cosa ma inviando una richiesta get
+*/
+
+
+function fung(){
+APIserver.get("/login", (req, res) => {
+    res.sendFile(path.join(__dirname + "/es.html"));
+});
+}
+<botton id="get" onclick="fung()">get</botton>
+
+function funp(){
+APIserver.post("/login", (req, res) => {
+    res.sendFile(path.join(__dirname + "/es.html"));
+});
+}
+<botton id="post" onclick="funp()">post</botton>
