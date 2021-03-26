@@ -58,7 +58,7 @@ var HostName = "127.0.0.1";
 });
 */
 
-apiServer.use(cors());
+//apiServer.use(cors());
 
 APIserver.listen(port, () => {
     console.log("server running on port ", port);
