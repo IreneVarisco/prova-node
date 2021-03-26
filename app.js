@@ -39,6 +39,7 @@ var path = require("path");
 
 var http = require("http");
 var express = require("express");
+var cors = require("cors");
 var APIserver = express();
 var port = 3000;
 
