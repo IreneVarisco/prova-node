@@ -124,5 +124,4 @@ APIserver.post("/login", (req, res) => {
     res.sendFile(path.join(__dirname + "/es.html"));
 });
 }
-//<botton id="post" onclick="funp()">post</botton>
 */
