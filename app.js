@@ -95,17 +95,20 @@ APIserver.get("/somma", (req, res) => {
     }
 });
 
+
+
+/*
 // riceve in ingresso username e password e invia un messaggio "benvenuto [username]"
 APIserver.get("/login" , (req, res) => {}); 
 
 // riceve in ingresso username e password e invia un messaggio "benvenuto [username]"
 APIserver.post("/login" , (req, res) => {}); 
 
-/*
-sviluppare una pagina html con un div e duie pulsanti.
-Premendo sul pulsante "post" invierete una post con username e password e visualizzerete nella div il messaggio inviato dal server
-Premendo il pulsante "get" stessa cosa ma inviando una richiesta get
-*/
+
+//sviluppare una pagina html con un div e duie pulsanti.
+//Premendo sul pulsante "post" invierete una post con username e password e visualizzerete nella div il messaggio inviato dal server
+//Premendo il pulsante "get" stessa cosa ma inviando una richiesta get
+
 
 
 function fung(){
@@ -121,3 +124,4 @@ APIserver.post("/login", (req, res) => {
 });
 }
 <botton id="post" onclick="funp()">post</botton>
+*/
