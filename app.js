@@ -30,6 +30,7 @@ package.json--> descrizione fel progetto
     npm start
 
      res.end non si usa più, quindi si usa send
+     //const { hostname } = require("os");
 */
 
 
@@ -42,9 +43,11 @@ var express = require("express");
 var cors = require("cors");
 var APIserver = express();
 var port = 3000;
+APIserver.use(cors());
 
-//const { hostname } = require("os");
+
 var HostName = "127.0.0.1";
+
 
 
 
@@ -98,12 +101,22 @@ APIserver.get("/somma", (req, res) => {
 
 
 
-/*
-// riceve in ingresso username e password e invia un messaggio "benvenuto [username]"
-APIserver.get("/login" , (req, res) => {}); 
 
 // riceve in ingresso username e password e invia un messaggio "benvenuto [username]"
-APIserver.post("/login" , (req, res) => {}); 
+APIserver.get("/login" , (req, res) => {
+    console.log(req.query);
+    var username = req.query.username;
+    var psw = req.query.psw;
+
+    res.status(200);
+    res.send("benvenuto " + username);
+}); 
+
+// riceve in ingresso username e password e invia un messaggio "benvenuto [username]"
+APIserver.post("/login" , (req, res) => {
+    console.log(req.query);
+    
+}); 
 
 
 //sviluppare una pagina html con un div e duie pulsanti.
@@ -111,17 +124,3 @@ APIserver.post("/login" , (req, res) => {});
 //Premendo il pulsante "get" stessa cosa ma inviando una richiesta get
 
 
-
-function fung(){
-APIserver.get("/login", (req, res) => {
-    res.sendFile(path.join(__dirname + "/es.html"));
-});
-}
-<botton id="get" onclick="fung()">get</botton>
-
-function funp(){
-APIserver.post("/login", (req, res) => {
-    res.sendFile(path.join(__dirname + "/es.html"));
-});
-}
-*/
