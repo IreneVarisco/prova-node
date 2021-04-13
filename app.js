@@ -101,6 +101,27 @@ APIserver.get("/somma", (req, res) => {
 
 
 
+APIserver.get("/voto" , (req, res) => {
+    var d = req.query.voto;
+    console.log(req.query.voto);
+    var voti = [];
+    d.forEach(element => {
+        console.log(element.data);
+        var data = element.data;
+        var voto = element.voto;
+        var descrizione = element.descrizione;
+        var voto = {
+            data: data,
+            voto: voto,
+            descrizione: descrizione 
+        };
+        voti.push(voto);
+    });
+    console.log(req.query);
+   
+    res.status(200);
+    res.send("voti: <br>" + Object.values(voti[0]) + ", <br>" + Object.values(voti[1]) + ", <br>"+ Object.values(voti[2]));
+}); 
 
 // riceve in ingresso username e password e invia un messaggio "benvenuto [username]"
 APIserver.get("/login" , (req, res) => {

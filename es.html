@@ -1,81 +1,119 @@
 <html>
-  <body>
-    <div id="div1"></div>
-    <button id="btn_get">login get</button>
-    <button id="btn_post">login post</button>
 
-    <script
-      src="https://code.jquery.com/jquery-3.6.0.min.js"
-      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-      crossorigin="anonymous"
-    ></script>
+<body>
+  <div id="div1"></div>
+  <button id="btn_get">login get</button>
+  <button id="btn_post">login post</button>
+  <button id="btn_getvoto">voto get</button>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
-    <script>
-      $("#btn_get").click( () =>{
-        $.ajax({
-          // url: "http://http://ec2-35-157-20-34.eu-central-1.compute.amazonaws.com:3000//login",
-          url: "http://127.0.0.1:3000/login",
-          type: "get",
-          crossDomain: true,
-          headers: {
-            accept: "application/json",
-            "Access-Control-Allow-Origin": "*",
-          },
-          data: {
-            username: "irene",
-            psw: "password"
-          },
-          success: function (res) {
-            console.log("successo: ", res);
-            stampa(res);
-          },
-          error: function (res) {
-            console.log("errore: ", res);
-          },
-        });
-
-        var stampa = function (ris) {
-          document.getElementById("div1").innerHTML =
-            "<h2>Risultato: " + ris + "</h2>";
-        };
+  <script>
+    $("#btn_get").click(() => {
+      $.ajax({
+        // url: "http://http://ec2-35-157-20-34.eu-central-1.compute.amazonaws.com:3000//login",
+        url: "http://127.0.0.1:3000/login",
+        type: "get",
+        crossDomain: true,
+        headers: {
+          accept: "application/json",
+          "Access-Control-Allow-Origin": "*",
+        },
+        data: {
+          username: "irene",
+          psw: "password"
+        },
+        success: function (res) {
+          console.log("successo: ", res);
+          stampa(res);
+        },
+        error: function (res) {
+          console.log("errore: ", res);
+        },
       });
 
-      $("#btn_post").click( () =>{
-          $.post({
-            url: "http://127.0.0.1:3000/login",
-            dataType: 'json',
-            data: {
-            username: "irene",
-            psw: "password"
-          },
-          })
-        // $.ajax({
-        //   // url: "http://http://ec2-35-157-20-34.eu-central-1.compute.amazonaws.com:3000//login",
-        //   url: "http://127.0.0.1:3000/login",
-        //   type: "post",
-        //   crossDomain: true,
-        //   headers: {
-        //     accept: "application/json",
-        //     "Access-Control-Allow-Origin": "*",
-        //   },
-        //   data: {
-        //     username: "irene",
-        //     psw: "password"
-        //   },
-        //   success: function (res) {
-        //     console.log("successo: ", res);
-        //     stampa(res);
-        //   },
-        //   error: function (res) {
-        //     console.log("errore: ", res);
-        //   },
-        // });
+      var stampa = function (ris) {
+        document.getElementById("div1").innerHTML =
+          "<h2>Risultato: " + ris + "</h2>";
+      };
+    });
 
-        var stampa = function (ris) {
-          document.getElementById("div1").innerHTML =
-            "<h2>Risultato: " + ris + "</h2>";
-        };
+    var a = {data: "8 settembre", voto: "7", descrizione: "primo voto" };
+    var b = {data: "8 dicembre", voto: "8", descrizione: "secondo voto" };
+    var c = {data: "8 maggio", voto: "9", descrizione: "terzo voto" };
+    var ar = [ a, b, c ];
+
+    $("#btn_getvoto").click(() => {
+      $.ajax({
+        // url: "http://http://ec2-35-157-20-34.eu-central-1.compute.amazonaws.com:3000//voto",
+        url: "http://127.0.0.1:3000/voto",
+        type: "get",
+        crossDomain: true,
+        headers: {
+          accept: "application/json",
+          "Access-Control-Allow-Origin": "*",
+        },
+        data: {
+          voto: ar
+          },
+        success: function (res) {
+          console.log("successo: ", res);
+          stampa(res);
+        },
+        error: function (res) {
+          console.log("errore: ", res);
+        },
       });
-    </script>
-  </body>
+
+      var stampa = function (ris) {
+        document.getElementById("div1").innerHTML =
+          "<h2>voti: <br>" + ris + "</h2>";
+      };
+    });
+
+
+
+
+
+
+
+    $("#btn_post").click(() => {
+      $.post({
+        url: "http://127.0.0.1:3000/login",
+        dataType: 'json',
+        data: {
+          username: "irene",
+          psw: "password"
+        },
+      })
+      // $.ajax({
+      //   // url: "http://http://ec2-35-157-20-34.eu-central-1.compute.amazonaws.com:3000//login",
+      //   url: "http://127.0.0.1:3000/login",
+      //   type: "post",
+      //   crossDomain: true,
+      //   headers: {
+      //     accept: "application/json",
+      //     "Access-Control-Allow-Origin": "*",
+      //   },
+      //   data: {
+      //     username: "irene",
+      //     psw: "password"
+      //   },
+      //   success: function (res) {
+      //     console.log("successo: ", res);
+      //     stampa(res);
+      //   },
+      //   error: function (res) {
+      //     console.log("errore: ", res);
+      //   },
+      // });
+
+      var stampa = function (ris) {
+        document.getElementById("div1").innerHTML =
+          "<h2>Risultato: " + ris + "</h2>";
+      };
+    });
+  </script>
+</body>
+
 </html>
