@@ -3,7 +3,7 @@ si scarica :)
 è un runtime 
 npm gestisce le librerie di node
 
-cdm-->content delivery network, preleva una libreria del web senza doverla scariscarle all'interno del progetto, in node non è possibile
+cdn-->content delivery network, preleva una libreria del web senza doverla scariscarle all'interno del progetto, in node non è possibile
 
 npm i jquery
 
@@ -30,7 +30,7 @@ package.json--> descrizione fel progetto
     npm start
 
      res.end non si usa più, quindi si usa send
-     //const { hostname } = require("os");
+     const { hostname } = require("os");
 */
 
 
@@ -71,7 +71,8 @@ APIserver.get("/nome", (req, res) => {
     console.log("ho ricevuto una get su nome");
     /*
     res.statusCode=200;
-    res.setHeader("content-Type", "text/plain");*/
+    res.setHeader("content-Type", "text/plain");
+    */
     res.send("ciao! il nome del server è " + nome);
 });
 
@@ -80,7 +81,8 @@ APIserver.get("/", function (req, res) {
 });
 
 APIserver.get("/bella", (req, res) => {
-    //res.sendFile("C:\\Users\\varisco.irene\\Desktop\\prova-node\\bella.html");                 //manda un file attraverso il suo path
+    //res.sendFile("C:\\Users\\varisco.irene\\Desktop\\prova-node\\bella.html");                 
+    //manda un file attraverso il suo path
     res.sendFile(path.join(__dirname + "/bella.html")); //funziona con tutti i sistemi operativi
 });
 
@@ -140,8 +142,8 @@ APIserver.post("/login" , (req, res) => {
 }); 
 
 
-//sviluppare una pagina html con un div e duie pulsanti.
-//Premendo sul pulsante "post" invierete una post con username e password e visualizzerete nella div il messaggio inviato dal server
-//Premendo il pulsante "get" stessa cosa ma inviando una richiesta get
+// sviluppare una pagina html con un div e due pulsanti.
+// Premendo sul pulsante "post" invierete una post con username e password e visualizzerete nella div il messaggio inviato dal server
+// Premendo il pulsante "get" stessa cosa ma inviando una richiesta get
 
 
